@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin | Digital Seva</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+        }
+
+        th {
+            background: #1769e0;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background: #f5f7fb;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: Arial, sans-serif;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h2 class="logo">
+        Digital Seva Admin
+    </h2>
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="questionnaire.html">
+            Questionnaire
+        </a>
+
+        <a href="feedback.html">
+            Feedback
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<section class="hero">
+
+    <p class="small-title">
+        COMMUNITY ENGAGEMENT PROGRAM
+    </p>
+
+    <h1>
+        Admin Dashboard
+    </h1>
+
+    <p>
+        View questionnaire and feedback submissions.
+    </p>
+
+</section>
+
+
+
+<!-- QUESTIONNAIRE -->
+
+<section class="services">
+
+    <h2>
+        Questionnaire Responses
+    </h2>
+
+    <div class="card">
+
+        <button
+            class="btn"
+            onclick="loadQuestionnaire()">
+
+            Load Questionnaire Data
+
+        </button>
+
+        <br><br>
+
+        <div id="questionnaireData">
+
+            Click the button to load data.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- FEEDBACK -->
+
+<section class="services">
+
+    <h2>
+        Feedback Responses
+    </h2>
+
+    <div class="card">
+
+        <button
+            class="btn"
+            onclick="loadFeedback()">
+
+            Load Feedback Data
+
+        </button>
+
+        <br><br>
+
+        <div id="feedbackData">
+
+            Click the button to load data.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+
+/* =====================================
+   GOOGLE APPS SCRIPT URL
+===================================== */
+
+const GOOGLE_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbzQgQ7NTbtqD_gO3XEeQMG4LxwSYmhl3E5TmbGn3E_NSaRw4PELjahzyhy9XLJKSXoH/exec";
+
+
+
+/* =====================================
+   LOAD QUESTIONNAIRE
+===================================== */
+
+async function loadQuestionnaire() {
+
+    const container =
+        document.getElementById(
+            "questionnaireData"
+        );
+
+    container.innerHTML =
+        "<p>Loading questionnaire data...</p>";
+
+
+    try {
+
+        const response =
+            await fetch(
+                GOOGLE_SCRIPT_URL +
+                "?type=questionnaire"
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Server error: " +
+                response.status
+            );
+
+        }
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            !result.success ||
+            !result.data ||
+            result.data.length === 0
+        ) {
+
+            container.innerHTML =
+                "<p>No questionnaire responses found.</p>";
+
+            return;
+
+        }
+
+
+        let html = `
+
+            <div class="table-container">
+
+            <table>
+
+                <tr>
+
+                    <th>No.</th>
+
+                    <th>Name</th>
+
+                    <th>Email</th>
+
+                    <th>Answers</th>
+
+                    <th>Date</th>
+
+                </tr>
+
+        `;
+
+
+        result.data.forEach(
+            function(item, index) {
+
+
+                let answersText =
+                    item.Answers || "";
+
+
+                try {
+
+                    answersText =
+                        JSON.stringify(
+                            JSON.parse(
+                                item.Answers
+                            ),
+                            null,
+                            2
+                        );
+
+                }
+
+                catch(error) {
+
+                    // Keep original answer
+
+                }
+
+
+                html += `
+
+                    <tr>
+
+                        <td>
+                            ${index + 1}
+                        </td>
+
+                        <td>
+                            ${item.Name || ""}
+                        </td>
+
+                        <td>
+                            ${item.Email || ""}
+                        </td>
+
+                        <td>
+                            <pre>${answersText}</pre>
+                        </td>
+
+                        <td>
+                            ${item.Date || ""}
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }
+        );
+
+
+        html += `
+
+            </table>
+
+            </div>
+
+        `;
+
+
+        container.innerHTML =
+            html;
+
+
+    }
+
+    catch(error) {
+
+        console.log(
+            "Questionnaire error:",
+            error
+        );
+
+
+        container.innerHTML = `
+
+            <p>
+
+                Unable to load questionnaire data.
+
+            </p>
+
+            <p>
+
+                Error:
+                ${error.message}
+
+            </p>
+
+        `;
+
+    }
+
+}
+
+
+
+/* =====================================
+   LOAD FEEDBACK
+===================================== */
+
+async function loadFeedback() {
+
+    const container =
+        document.getElementById(
+            "feedbackData"
+        );
+
+    container.innerHTML =
+        "<p>Loading feedback data...</p>";
+
+
+    try {
+
+        const response =
+            await fetch(
+                GOOGLE_SCRIPT_URL +
+                "?type=feedback"
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Server error: " +
+                response.status
+            );
+
+        }
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            !result.success ||
+            !result.data ||
+            result.data.length === 0
+        ) {
+
+            container.innerHTML =
+                "<p>No feedback responses found.</p>";
+
+            return;
+
+        }
+
+
+        let html = `
+
+            <div class="table-container">
+
+            <table>
+
+                <tr>
+
+                    <th>No.</th>
+
+                    <th>Name</th>
+
+                    <th>Email</th>
+
+                    <th>Experience</th>
+
+                    <th>Knowledge Improvement</th>
+
+                    <th>Confidence</th>
+
+                    <th>Safety Awareness</th>
+
+                    <th>Suggestions</th>
+
+                    <th>Date</th>
+
+                </tr>
+
+        `;
+
+
+        result.data.forEach(
+            function(item, index) {
+
+
+                html += `
+
+                    <tr>
+
+                        <td>
+                            ${index + 1}
+                        </td>
+
+                        <td>
+                            ${item.Name || ""}
+                        </td>
+
+                        <td>
+                            ${item.Email || ""}
+                        </td>
+
+                        <td>
+                            ${item.Experience || ""}
+                        </td>
+
+                        <td>
+                            ${item["Knowledge Improvement"] || ""}
+                        </td>
+
+                        <td>
+                            ${item.Confidence || ""}
+                        </td>
+
+                        <td>
+                            ${item["Safety Awareness"] || ""}
+                        </td>
+
+                        <td>
+                            ${item.Suggestions || ""}
+                        </td>
+
+                        <td>
+                            ${item.Date || ""}
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }
+        );
+
+
+        html += `
+
+            </table>
+
+            </div>
+
+        `;
+
+
+        container.innerHTML =
+            html;
+
+
+    }
+
+    catch(error) {
+
+        console.log(
+            "Feedback error:",
+            error
+        );
+
+
+        container.innerHTML = `
+
+            <p>
+
+                Unable to load feedback data.
+
+            </p>
+
+            <p>
+
+                Error:
+                ${error.message}
+
+            </p>
+
+        `;
+
+    }
+
+}
+
+
+</script>
+
+
+
+<footer>
+
+    <p>
+        © 2026 Community Engagement Program
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

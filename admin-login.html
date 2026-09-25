@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login | Digital Seva</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h2 class="logo">
+        Digital Seva
+    </h2>
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<section class="hero">
+
+    <p class="small-title">
+        COMMUNITY ENGAGEMENT PROGRAM
+    </p>
+
+    <h1>
+        Admin Login
+    </h1>
+
+    <p>
+        Login to access the project dashboard.
+    </p>
+
+</section>
+
+
+
+<section class="services">
+
+    <div class="card"
+         style="max-width:500px; margin:auto;">
+
+        <h2>
+            Admin Login
+        </h2>
+
+        <br>
+
+
+        <form id="loginForm">
+
+
+            <label>
+                Username
+            </label>
+
+            <br>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter username"
+                required
+            >
+
+            <br><br>
+
+
+            <label>
+                Password
+            </label>
+
+            <br>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter password"
+                required
+            >
+
+            <br><br>
+
+
+            <button
+                type="submit"
+                class="btn">
+
+                Login
+
+            </button>
+
+
+        </form>
+
+
+        <p id="loginMessage"></p>
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+document
+.getElementById("loginForm")
+.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        const username =
+            document.getElementById(
+                "username"
+            ).value;
+
+
+        const password =
+            document.getElementById(
+                "password"
+            ).value;
+
+
+        /*
+           Demo login for college project
+        */
+
+        if (
+            username === "admin" &&
+            password === "admin123"
+        ) {
+
+            window.location.href =
+                "admin.html";
+
+        }
+
+        else {
+
+            document
+            .getElementById(
+                "loginMessage"
+            )
+            .innerText =
+                "Invalid username or password.";
+
+        }
+
+    }
+);
+
+</script>
+
+
+
+<footer>
+
+    <p>
+        © 2026 Community Engagement Program
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

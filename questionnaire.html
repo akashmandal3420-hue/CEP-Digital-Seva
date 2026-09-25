@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Questionnaire | Digital Seva</title>
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<header>
+
+```
+<h2 class="logo">Digital Seva</h2>
+
+<nav>
+
+    <a href="index.html">Home</a>
+
+    <a href="about.html">About</a>
+
+    <a href="services.html">Services</a>
+
+    <a href="training.html">Training</a>
+
+    <a href="questionnaire.html">Questionnaire</a>
+
+    <a href="feedback.html">Feedback</a>
+
+    <a href="findings.html">Findings</a>
+
+    <a href="references.html">References</a>
+
+</nav>
+```
+
+</header>
+
+<section class="hero">
+
+```
+<p class="small-title">
+    COMMUNITY ENGAGEMENT PROGRAM
+</p>
+
+<h1>Training Questionnaire</h1>
+
+<p>
+    Please answer the following questions.
+</p>
+```
+
+</section>
+
+<section class="services">
+
+```
+<div class="card">
+
+    <form id="questionnaireForm">
+
+        <h3>Participant Details</h3>
+
+        <br>
+
+        <input
+            type="text"
+            id="qname"
+            placeholder="Enter your name"
+            required
+        >
+
+        <br><br>
+
+        <input
+            type="email"
+            id="qemail"
+            placeholder="Enter your email"
+        >
+
+        <br><br>
+
+        <h3>Questions</h3>
+
+        <br>
+
+
+        <!-- Question 1 -->
+
+        <p>
+            <b>
+                1. Were you aware of DigiLocker before the training?
+            </b>
+        </p>
+
+        <label>
+            <input type="radio" name="q1" value="Yes" required>
+            Yes
+        </label>
+
+        <label>
+            <input type="radio" name="q1" value="No">
+            No
+        </label>
+
+        <br><br>
+
+
+        <!-- Question 2 -->
+
+        <p>
+            <b>
+                2. Which service were you most familiar with?
+            </b>
+        </p>
+
+        <select name="q2" required>
+
+            <option value="">Select</option>
+
+            <option value="DigiLocker">DigiLocker</option>
+
+            <option value="Aadhaar">Aadhaar</option>
+
+            <option value="PAN">PAN</option>
+
+        </select>
+
+        <br><br>
+
+
+        <!-- Question 3 -->
+
+        <p>
+            <b>
+                3. How useful was the training?
+            </b>
+        </p>
+
+        <label>
+            <input type="radio" name="q3" value="Very Useful" required>
+            Very Useful
+        </label>
+
+        <label>
+            <input type="radio" name="q3" value="Useful">
+            Useful
+        </label>
+
+        <label>
+            <input type="radio" name="q3" value="Not Useful">
+            Not Useful
+        </label>
+
+        <br><br>
+
+
+        <!-- Question 4 -->
+
+        <p>
+            <b>
+                4. Did your knowledge improve after training?
+            </b>
+        </p>
+
+        <label>
+            <input type="radio" name="q4" value="Yes" required>
+            Yes
+        </label>
+
+        <label>
+            <input type="radio" name="q4" value="No">
+            No
+        </label>
+
+        <br><br>
+
+
+        <!-- Question 5 -->
+
+        <p>
+            <b>
+                5. Do you feel more confident using
+                digital services?
+            </b>
+        </p>
+
+        <label>
+            <input type="radio" name="q5" value="Yes" required>
+            Yes
+        </label>
+
+        <label>
+            <input type="radio" name="q5" value="No">
+            No
+        </label>
+
+        <br><br>
+
+
+        <!-- Question 6 -->
+
+        <p>
+            <b>
+                6. Which topic was most informative?
+            </b>
+        </p>
+
+        <select name="q6" required>
+
+            <option value="">Select</option>
+
+            <option value="DigiLocker">DigiLocker</option>
+
+            <option value="Aadhaar">Aadhaar</option>
+
+            <option value="PAN">PAN</option>
+
+            <option value="Digital Safety">Digital Safety</option>
+
+        </select>
+
+        <br><br>
+
+
+        <!-- Question 7 -->
+
+        <p>
+            <b>
+                7. Do you understand how to use DigiLocker?
+            </b>
+        </p>
+
+        <label>
+            <input type="radio" name="q7" value="Yes" required>
+            Yes
+        </label>
+
+        <label>
+            <input type="radio" name="q7" value="No">
+            No
+        </label>
+
+        <br><br>
+
+
+        <!-- Question 8 -->
+
+        <p>
+            <b>
+                8. Do you understand the importance of Aadhaar?
+            </b>
+        </p>
+
+        <label>
+            <input type="radio" name="q8" value="Yes" required>
+            Yes
+        </label>
+
+        <label>
+            <input type="radio" name="q8" value="No">
+            No
+        </label>
+
+        <br><br>
+
+
+        <!-- Question 9 -->
+
+        <p>
+            <b>
+                9. Do you understand the purpose of PAN?
+            </b>
+        </p>
+
+        <label>
+            <input type="radio" name="q9" value="Yes" required>
+            Yes
+        </label>
+
+        <label>
+            <input type="radio" name="q9" value="No">
+            No
+        </label>
+
+        <br><br>
+
+
+        <!-- Question 10 -->
+
+        <p>
+            <b>
+                10. Do you know how to protect
+                your digital information?
+            </b>
+        </p>
+
+        <label>
+            <input type="radio" name="q10" value="Yes" required>
+            Yes
+        </label>
+
+        <label>
+            <input type="radio" name="q10" value="No">
+            No
+        </label>
+
+        <br><br>
+
+
+        <!-- Question 11 -->
+
+        <p>
+            <b>
+                11. Would you recommend this training
+                to others?
+            </b>
+        </p>
+
+        <label>
+            <input type="radio" name="q11" value="Yes" required>
+            Yes
+        </label>
+
+        <label>
+            <input type="radio" name="q11" value="No">
+            No
+        </label>
+
+        <br><br>
+
+
+        <!-- Question 12 -->
+
+        <p>
+            <b>
+                12. Do you feel digital government
+                services are useful?
+            </b>
+        </p>
+
+        <label>
+            <input type="radio" name="q12" value="Yes" required>
+            Yes
+        </label>
+
+        <label>
+            <input type="radio" name="q12" value="No">
+            No
+        </label>
+
+        <br><br>
+
+
+        <!-- Question 13 -->
+
+        <p>
+            <b>
+                13. Do you know about safe
+                online verification?
+            </b>
+        </p>
+
+        <label>
+            <input type="radio" name="q13" value="Yes" required>
+            Yes
+        </label>
+
+        <label>
+            <input type="radio" name="q13" value="No">
+            No
+        </label>
+
+        <br><br>
+
+
+        <!-- Question 14 -->
+
+        <p>
+            <b>
+                14. Would you use digital government
+                services in future?
+            </b>
+        </p>
+
+        <label>
+            <input type="radio" name="q14" value="Yes" required>
+            Yes
+        </label>
+
+        <label>
+            <input type="radio" name="q14" value="No">
+            No
+        </label>
+
+        <br><br>
+
+
+        <!-- Question 15 -->
+
+        <p>
+            <b>
+                15. Overall, how would you rate the training?
+            </b>
+        </p>
+
+        <select name="q15" required>
+
+            <option value="">Select</option>
+
+            <option value="Excellent">Excellent</option>
+
+            <option value="Good">Good</option>
+
+            <option value="Average">Average</option>
+
+            <option value="Poor">Poor</option>
+
+        </select>
+
+        <br><br>
+
+
+        <button type="submit" class="btn">
+            Submit Questionnaire
+        </button>
+
+    </form>
+
+</div>
+```
+
+</section>
+
+<script>
+
+const GOOGLE_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbwuyM20WOyvcGZN1ISYd3IOBUTDaTID74jVmQcxKPCpeERLv9JnHC_f9mz9v4lleoGN/exec";
+
+
+document
+.getElementById("questionnaireForm")
+.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+
+    const answers = {};
+
+
+    for (let i = 1; i <= 15; i++) {
+
+        const radio =
+            document.querySelector(
+                `input[name="q${i}"]:checked`
+            );
+
+        const select =
+            document.querySelector(
+                `select[name="q${i}"]`
+            );
+
+
+        if (radio) {
+
+            answers[`q${i}`] = radio.value;
+
+        }
+        else if (select) {
+
+            answers[`q${i}`] = select.value;
+
+        }
+        else {
+
+            answers[`q${i}`] = "";
+
+        }
+
+    }
+
+
+    const data = {
+
+        type: "questionnaire",
+
+        name:
+            document.getElementById("qname").value,
+
+        email:
+            document.getElementById("qemail").value,
+
+        answers: answers
+
+    };
+
+
+    try {
+
+        await fetch(GOOGLE_SCRIPT_URL, {
+
+            method: "POST",
+
+            mode: "no-cors",
+
+            body: JSON.stringify(data)
+
+        });
+
+
+        alert(
+            "Questionnaire submitted successfully!"
+        );
+
+
+        document
+            .getElementById("questionnaireForm")
+            .reset();
+
+
+    }
+    catch (error) {
+
+        console.log(error);
+
+        alert(
+            "Unable to submit questionnaire."
+        );
+
+    }
+
+});
+
+</script>
+
+<footer>
+
+```
+<p>
+    © 2026 Community Engagement Program
+</p>
+```
+
+</footer>
+
+</body>
+
+</html>

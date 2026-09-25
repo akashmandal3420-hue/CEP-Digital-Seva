@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Feedback | Digital Seva</title>
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<header>
+
+```
+<h2 class="logo">
+    Digital Seva
+</h2>
+
+<nav>
+
+    <a href="index.html">Home</a>
+
+    <a href="about.html">About</a>
+
+    <a href="services.html">Services</a>
+
+    <a href="training.html">Training</a>
+
+    <a href="safety.html">Safety</a>
+
+    <a href="questionnaire.html">Questionnaire</a>
+
+    <a href="feedback.html">Feedback</a>
+
+    <a href="findings.html">Findings</a>
+
+    <a href="references.html">References</a>
+
+</nav>
+```
+
+</header>
+
+<section class="hero">
+
+```
+<p class="small-title">
+    COMMUNITY ENGAGEMENT PROGRAM
+</p>
+
+<h1>
+    Training Feedback
+</h1>
+
+<p>
+    Please share your experience with the training.
+</p>
+```
+
+</section>
+
+<section class="services">
+
+```
+<div class="card">
+
+    <form id="feedbackForm">
+
+
+        <h3>Participant Details</h3>
+
+        <br>
+
+
+        <input
+            type="text"
+            id="fname"
+            placeholder="Enter your name"
+            required
+        >
+
+        <br><br>
+
+
+        <input
+            type="email"
+            id="femail"
+            placeholder="Enter your email"
+        >
+
+        <br><br>
+
+
+        <h3>Feedback</h3>
+
+        <br>
+
+
+        <!-- Experience -->
+
+        <p>
+            <b>
+                1. How was your overall experience?
+            </b>
+        </p>
+
+        <label>
+            <input
+                type="radio"
+                name="experience"
+                value="Excellent"
+                required
+            >
+            Excellent
+        </label>
+
+        <label>
+            <input
+                type="radio"
+                name="experience"
+                value="Good"
+            >
+            Good
+        </label>
+
+        <label>
+            <input
+                type="radio"
+                name="experience"
+                value="Average"
+            >
+            Average
+        </label>
+
+        <br><br>
+
+
+        <!-- Knowledge -->
+
+        <p>
+            <b>
+                2. Did your knowledge improve after the training?
+            </b>
+        </p>
+
+        <label>
+            <input
+                type="radio"
+                name="knowledge_improvement"
+                value="Yes"
+                required
+            >
+            Yes
+        </label>
+
+        <label>
+            <input
+                type="radio"
+                name="knowledge_improvement"
+                value="No"
+            >
+            No
+        </label>
+
+        <br><br>
+
+
+        <!-- Confidence -->
+
+        <p>
+            <b>
+                3. Do you feel more confident using digital services?
+            </b>
+        </p>
+
+        <label>
+            <input
+                type="radio"
+                name="confidence"
+                value="Yes"
+                required
+            >
+            Yes
+        </label>
+
+        <label>
+            <input
+                type="radio"
+                name="confidence"
+                value="No"
+            >
+            No
+        </label>
+
+        <br><br>
+
+
+        <!-- Safety -->
+
+        <p>
+            <b>
+                4. Did the training improve your digital safety awareness?
+            </b>
+        </p>
+
+        <label>
+            <input
+                type="radio"
+                name="safety_awareness"
+                value="Yes"
+                required
+            >
+            Yes
+        </label>
+
+        <label>
+            <input
+                type="radio"
+                name="safety_awareness"
+                value="No"
+            >
+            No
+        </label>
+
+        <br><br>
+
+
+        <!-- Suggestions -->
+
+        <p>
+            <b>
+                5. Do you have any suggestions?
+            </b>
+        </p>
+
+        <textarea
+            id="suggestions"
+            rows="5"
+            placeholder="Enter your suggestions"
+            style="width:100%; padding:10px;"
+        ></textarea>
+
+        <br><br>
+
+
+        <button
+            type="submit"
+            class="btn"
+        >
+            Submit Feedback
+        </button>
+
+
+    </form>
+
+</div>
+```
+
+</section>
+
+<script>
+
+const GOOGLE_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbwuyM20WOyvcGZN1ISYd3IOBUTDaTID74jVmQcxKPCpeERLv9JnHC_f9mz9v4lleoGN/exec";
+
+
+document
+.getElementById("feedbackForm")
+.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+
+    const data = {
+
+        type: "feedback",
+
+        name:
+            document.getElementById("fname").value,
+
+        email:
+            document.getElementById("femail").value,
+
+        experience:
+            document.querySelector(
+                'input[name="experience"]:checked'
+            )?.value || "",
+
+        knowledge_improvement:
+            document.querySelector(
+                'input[name="knowledge_improvement"]:checked'
+            )?.value || "",
+
+        confidence:
+            document.querySelector(
+                'input[name="confidence"]:checked'
+            )?.value || "",
+
+        safety_awareness:
+            document.querySelector(
+                'input[name="safety_awareness"]:checked'
+            )?.value || "",
+
+        suggestions:
+            document.getElementById("suggestions").value
+
+    };
+
+
+    try {
+
+        await fetch(GOOGLE_SCRIPT_URL, {
+
+            method: "POST",
+
+            mode: "no-cors",
+
+            body: JSON.stringify(data)
+
+        });
+
+
+        alert(
+            "Feedback submitted successfully!"
+        );
+
+
+        document
+            .getElementById("feedbackForm")
+            .reset();
+
+
+    }
+    catch (error) {
+
+        console.log(error);
+
+        alert(
+            "Unable to submit feedback."
+        );
+
+    }
+
+});
+
+</script>
+
+<footer>
+
+```
+<p>
+    © 2026 Community Engagement Program
+</p>
+
+
+</footer>
+
+</body>
+
+</html>
